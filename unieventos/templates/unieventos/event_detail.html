@@ -1,0 +1,27 @@
+{% extends 'base.html' %} <!-- responsável por extender a base.html ao template-->
+{% load static %} <!-- carrega o diretório static -->
+
+<!-- carrega o css do app unieventos -->
+{% block link %}
+  <link rel="stylesheet" href="{% static 'unieventos.css' %}">
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'unieventos:events' %}" style="text-decoration: none;"> <!-- redireciona para a página eventos-->
+    <div class="navigation">
+      <h3>Eventos</h3>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg></div>
+    </div> 
+</a>
+<!-- evento detalhado -->
+<div style="display: flex; justify-content: space-between;">
+  <h1>{{ event.name }}</h1> <!-- nome do evento-->
+</div>
+<p>Criado por: {{ event.creator.username }}</p> <!-- nome do criador-->
+<p>Data: {{ event.event_date }}</p> <!-- data do evento-->
+<div class="image"><img class="image" src="{{ event.image.url }}" alt="{{ event.name }}"></div> <!-- imagem do evento-->
+<p>{{ event.description }}</p> <!-- descrição do evento-->
+
+<div style="padding-top: 15px;"><a href="{% url 'unieventos:events' %}" class="btn"><b>Voltar para Eventos</b></a></div>  <!-- redireciona para a página eventos-->
+{% endblock %}
+

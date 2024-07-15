@@ -1,0 +1,36 @@
+{% extends 'base.html' %} <!-- responsável por extender a base.html ao template-->
+{% load static %} <!-- carrega o diretório static -->
+
+<!-- carrega o css do app unieventos -->
+{% block link %}
+  <link rel="stylesheet" href="{% static 'unieventos.css' %}">
+{% endblock %}
+
+<!-- altera o nome da página-->
+{% block title %}
+    <title>UniEventos.com</title>
+{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo, {{ user.first_name }} {{ user.last_name }}!</h1> <!-- mensagem de boas vinda e confirmação do usuário logado-->
+<a href="{% url 'unieventos:events' %}" style="text-decoration: none;">
+  <!-- navegação interna do site -->
+    <div class="navigation">
+      <h3>Eventos</h3>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff" ><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg></div>
+    </div> 
+</a>
+<div class="card-container" style="padding-top: 25px; padding-bottom: 25px;">
+  <!-- for para ver os três ultimos eventos criados -->
+    {% for event in events %}
+    <div class="card">
+      <div class="card-content">
+        <h3>{{ event.name }}</h3> <!-- nome do evento-->
+        <h4>{{ event.creator.username }}</h4> <!-- nome do criador do evento-->
+        <p>{{ event.description|truncatechars:170 }}</p> <!-- descrição resumida da evento-->
+        <a href="{% url 'unieventos:event_detail' event.pk %}" class="btn"><b>Ver Mais</b></a> <!-- botão para ver mais detalhes sobre o evento - utilizando a view event_detail-->
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %} <!-- responsável por extender a base.html ao template-->
+{% load static %} <!-- carrega o diretório static -->
+
+{% block content %}
+<!-- texto sobre o site 127.0.0.1:8000/about -->
+<div style="margin-top: 81px; padding-left: 50px; padding-right: 50px; margin-bottom: 81px;">
+    <p><b>O que é o UniEventos.com?</b></p>
+    <p>O UniEventos.com é um portal de eventos, desenvolvido por <a href="https://www.linkedin.com/in/luiz-augusto-holanda/" style="text-decoration: none; color: #000;"><b>Luiz Augusto Holanda</b></a>, um estudante de Engenharia de Software. A plataforma foi criada como requisito para a seletiva de desenvolvedores da UniDev, demonstrando sua capacidade de criar soluções tecnológicas.</p>
+    <p style="padding-top: 25px;"><b>O que você pode fazer no UniEventos.com?</b></p>
+    <ul>
+        <li><b>Acompanhe e participe de eventos:</b> Descubra uma variedade de eventos criados por universidades e organizações.</li>
+        <li><b>Crie seus próprios eventos:</b> Organize eventos universitários com facilidade, desde festas e confraternizações até workshops e palestras.</li>
+    </ul>
+    <p style="padding-top: 25px;"><b>Por que usar o UniEventos.com?</b></p>
+    <ul>
+        <li><b>Plataforma Adequada:</b> O UniEventos.com oferece o necessário para que você possa para encontrar, organizar e participar de eventos universitários e de outras organizações.</li>
+        <li><b>Fácil de usar:</b> A interface intuitiva e amigável torna o UniEventos.com acessível a todos os seus usuários.</li>
+        <li><b>Comunidade:</b> Conecte-se com outros usuários e expanda sua rede.</li>
+    </ul>
+    <div style="display: flex; justify-content: center; padding-top: 25px;"><p><h2>UniEventos.com: A sua plataforma de eventos!</h2></p></div>
+</div>
+{% endblock %}

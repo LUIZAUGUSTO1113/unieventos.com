@@ -1,0 +1,41 @@
+{% load static %} <!-- responsável por carregar a pasta static do diretório para o template-->
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    {% block link %}
+    {% endblock %}
+    
+    <!-- bloco ao qual adiciona algum script, como js -->
+    {% block script %}
+    {% endblock %}
+
+    {% block title %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <!-- bloco responsável por incluir o template nav.html ao base.html -->
+      {% block navbar %}
+        {% include 'nav.html' %}
+      {% endblock %}
+    </header>
+
+    <div class="content">
+      <!-- bloco de conteúdo, com classe (.content) trabalhada no css (style.css)-->
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <footer>
+      <!-- bloco responsável por incluir o template nav.html ao base.html -->
+      {% block footer %}
+        {% include 'footer.html' %}
+      {% endblock %}
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %} <!-- responsável por carregar a pasta static do diretório para o template-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'authentication.css' %}"> <!-- arquivo do diretório authentication/static/authentication.css-->
+    <title>Sign In</title>
+</head>
+<!-- navbar -->
+<nav class="nav">
+    <a href="{% url 'authentication:authentication' %}" class="logo"><b>UniEventos.com</b></a> <!-- logo que redireciona para a index (authentication)-->
+</nav>
+<body>
+    <!-- for paras as mensagens de alerta como erros e logout sucessivo -->
+    {% for message in messages %}
+    <div class="alert-content">
+        <span class="msg"><b>{{ message }}</b></span>
+    </div>
+    {% endfor %}
+
+    <div class="container">
+        <!-- formulário de login -->
+        <div class="login form">
+            <form action="/signin" method="post">
+                {% csrf_token %}
+                <label for="">Usuário</label>
+                <br>
+                <input type="text" id="username" name="username" placeholder="Entre com o seu Usuário" required>
+                <br>
+                <label for="">Senha</label>
+                <br>
+                <input type="password" id="password" name="password" placeholder="Entre com sua senha" required>
+                <br>
+                <div style="display: flex; justify-content: center; padding-top: 10px;"><button type="submit" class="btn"><b>Entrar</b></button></div>
+            </form>
+            <span class="signup">Não possui uma conta?
+            <a href="{% url 'authentication:signup' %}"><b>Criar</b></a> <!-- link para página de criar contas - utilizando a view signup-->
+        </div>
+    </div>
+</body>
+</html>

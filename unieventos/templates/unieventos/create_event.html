@@ -1,0 +1,58 @@
+{% extends 'base.html' %} <!-- responsável por extender a base.html ao template-->
+{% load static %} <!-- carrega o diretório static -->
+
+<!-- carrega o css do app unieventos -->
+{% block link %}
+  <link rel="stylesheet" href="{% static 'unieventos.css' %}">
+{% endblock %}
+
+<!-- modifica o título da página -->
+{% block title %}
+  <title>Criar Evento</title>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'unieventos:home' %}" style="text-decoration: none;"> <!-- redireciona para a home (unieventos) -->
+  <!-- navegação interna do site -->
+    <div class="navigation">
+      <h3>Início</h3>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg></div>
+    </div> 
+</a>
+<!-- for para mensagens de erros -->
+{% for message in messages %}
+<div class="alert-content">
+    <span class="msg"><b>{{ message }}</b></span>
+</div>
+{% endfor %}
+<h2 class="page-name">Criar Eventos</h2> 
+<div style="display: flex; justify-content: center;">
+    <div class="container">
+        <div class="create event form">
+          <!-- formulário de criação de eventos -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <label for="name">Nome:</label>
+                    <br>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                    <br>
+                    <label for="description">Descrição:</label>
+                    <br>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    <br>
+                    <label for="event_date">Data do Evento:</label>
+                    <br>
+                    <input type="date" class="form-control" id="event_date" name="event_date" required>
+                    <br>
+                    <label for="image">Imagem:</label>
+                    <br>
+                    <input type="file" class="form-control-file" id="image" name="image">
+                    <br>
+                    <div style="display: flex; justify-content: center;"><button type="submit" class="btn"><b>Criar Evento</b></button></div>
+            </form>
+        </div>
+    </div>
+</div>
+<div style="padding-top: 25px;"><a href="{% url 'unieventos:home' %}" class="btn"><b>Voltar para o Início</b></a></div> <!-- redireciona para a home (unieventos) -->
+
+{% endblock %}

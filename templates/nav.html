@@ -1,0 +1,19 @@
+{% load static %}  <!-- responsável por carregar a pasta static do diretório para o template-->
+
+{% block script %}
+<script src="{% static 'nav.js' %}" defer></script>  <!-- responsável por carregar o script js para responsividade da navbar-->
+{% endblock %}
+
+<!-- navbar padrão -->
+<nav class="nav">
+    <div class="navOpenBtn" style="height: 24px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#dedede"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></div>
+    <a href="{% url 'unieventos:home' %}" class="logo"><b>UniEventos.com</b></a>  <!-- logo que redireciona para a index (unieventos)-->
+
+    <ul class="nav-links">
+      <div class="navCloseBtn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></div>
+      <li><a href="{% url 'unieventos:events' %}">Eventos</a></li> <!-- link para página eventos - utilizando a view events-->
+      <li><a href="{% url 'unieventos:create' %}">Criar Evento</a></li> <!-- link para página criar evento - utilizando a view create-->
+      <li><a href="{% url 'unieventos:about' %}">Sobre</a></li> <!-- link para página sobre - utilizando a view about-->
+      <a href="{% url 'authentication:signout' %}"><button class="btn"><b>Sair</b></button></a> <!-- botão responsável pelo logout, retornando para 127.0.0.1:8000/welcome-->
+    </ul>
+</nav>

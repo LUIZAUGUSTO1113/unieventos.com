@@ -1,0 +1,58 @@
+{% load static %} <!-- responsável por carregar a pasta static do diretório para o template-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'authentication.css' %}"> <!-- arquivo do diretório authentication/static/authentication.css-->
+    <title>Sign Up</title>
+</head>
+<!-- navbar -->
+<nav class="nav">
+    <a href="{% url 'authentication:authentication' %}" class="logo"><b>UniEventos.com</b></a> <!-- logo que redireciona para a index (authentication)-->
+</nav>
+<body>
+    <!-- for paras as mensagens de alerta como erros e senha não identicas-->
+    {% for message in messages %}
+    <div class="alert-content">
+        <span class="msg"><b>{{ message }}</b></span>
+    </div>
+    {% endfor %}
+    <div class="container">
+        <!-- formulário de criar conta -->
+        <div class="registration form">
+            <form action="/signup" method="post">
+                {% csrf_token %}
+                <label for="">Usuário</label>
+                <br>
+                <input type="text" id="username" name="username" placeholder="Crie seu Usuário" required>
+                <br>
+                <label for="">Nome</label>
+                <br>
+                <input type="text" id="fname" name="fname" placeholder="Entre com seu Nome" required>
+                <br>
+                <label for="">Sobrenome</label>
+                <br>
+                <input type="text" id="lname" name="lname" placeholder="Entre com seu Sobrenome" required>
+                <br>
+                <label for="">Email</label>
+                <br>
+                <input type="email" id="email" name="email" placeholder="Entre com o seu Email" required>
+                <br>
+                <label for="">Senha</label>
+                <br>
+                <input type="password" id="password" name="password" placeholder="Crie uma Senha" required>
+                <br>
+                <label for="">Confirmar Senha</label>
+                <br>
+                <input type="password" id="cpassword" name="cpassword" placeholder="Confirme sua Senha" required>
+                <br>
+                <div style="display: flex; justify-content: center;"><button type="submit" class="btn"><b>Criar</b></button></div>
+            </form>
+            <span class="signin">Já possui uma conta?
+            <a href="{% url 'authentication:signin' %}"><b>Entrar</b></a> <!-- link para o app (unieventos) - utilizando a view signin-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
