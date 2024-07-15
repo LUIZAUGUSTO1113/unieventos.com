@@ -73,8 +73,8 @@ O UniEventos.com, não está 100% concluído, está faltando o desenvolvimento d
 * função delete de eventos, utilizando as regras requisitadas. 
 * uma página ou uma modal dedicada para o usuário, na qual contenha os eventos criados por este e também os eventos que este está incrito.
 * mudar as urls do event_detail, de pk (primary key) para o nome dos eventos.
-* possível uso do import de uma biblioteca na model Event, para tratar melhoro texto da descrição dos eventos.
-* maior responsividade e maior polimeto.
+* possível uso do import de uma biblioteca na model Event, para tratar melhor o texto da descrição dos eventos.
+* maior responsividade e maior polimento.
 * troca dos parâmetros da autenticação do Django, para realizar signin com e-mail.
 
 ## © 2024 1113, Inc.
